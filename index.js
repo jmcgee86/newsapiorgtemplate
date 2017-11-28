@@ -19,7 +19,7 @@ $(document).ready(function(){
     })
      $("#source").submit(function(event){
         event.preventDefault();
-        //alert(document.getElementById("selection").value);
+        document.getElementById("headlines").innerHTML = "";//removes headlines from any previous selected sources
         $.ajax({
         method: "GET",
         url: "https://newsapi.org/v2/top-headlines?sources=" + document.getElementById("selection").value,
@@ -27,13 +27,15 @@ $(document).ready(function(){
         success: function(data){
             if (data.status ==="ok"){
                 console.log(data)
-              //document.getElementById("headlines").innerHTML = "testing";
               for (var i=0; i < data.articles.length; i++){
                   var item = document.createElement("LI");
-                  item.innerHTML = data.articles[i].title;
+                  var description = document.createElement("SPAN");
+                  var link = data.articles[i].url;
+                  item.setAttribute("href", link);
+                  item.innerHTML = '<a target="_blank" href= "'+link+'">'+data.articles[i].title+'</a>'
+                    description.innerHTML = data.articles[i].description;
                   	document.getElementById("headlines").appendChild(item);
-
-                  
+                  	document.getElementById("headlines").appendChild(description);
 
               }
                     

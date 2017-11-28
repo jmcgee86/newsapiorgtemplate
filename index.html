@@ -8,6 +8,11 @@
         Page requires a key.js file with the following format
         var APIKEY = "apikey from news API.org" 
     -->
+    <style>
+        li {
+            font-weight: bold;
+        }
+    </style>
     
 </head>
 <body>
@@ -21,7 +26,7 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <h1>Headlines</h1>
-        <p id = "headlines"></p>
+        <ul id = "headlines"></ul>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
