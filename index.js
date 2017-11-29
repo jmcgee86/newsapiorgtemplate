@@ -24,6 +24,11 @@ $(document).ready(function() {
 	$("#source").submit(function(event) {
 		event.preventDefault();
 		document.getElementById("headlines").innerHTML = ""; //removes headlines from any previous selected sources
+		if (document.getElementById("selection").value === "default"){
+			document.getElementById("top").innerHTML = "";
+			alert ("Please Choose a News Source");
+		}
+		else{
 		$.ajax({
 			method: "GET",
 			url: "https://newsapi.org/v2/top-headlines?sources=" + document.getElementById("selection").value,
@@ -52,9 +57,11 @@ $(document).ready(function() {
 						tweet.setAttribute("class", "btn btn-primary tw");
 						tweet.setAttribute("type", "submit");
 						tweet.innerHTML = "Tweet It";
+						var br = document.createElement("BR");
 						document.getElementById("headlines").appendChild(item);
 						document.getElementById("headlines").appendChild(description);
 						document.getElementById("top").innerHTML = "Top Headlines from " + data.articles[i].source.name + ":";
+						document.getElementById("headlines").appendChild(br);
 						document.getElementById("headlines").appendChild(tweet);
 
 					}
@@ -62,5 +69,7 @@ $(document).ready(function() {
 				}
 		}
 		});
+		}//
 	});
+	
 });
