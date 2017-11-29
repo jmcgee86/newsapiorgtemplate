@@ -11,7 +11,7 @@ $(document).ready(function() {
 		},
 		success: function(data) {
 			if (data.status === "ok") {
-				console.log(data)
+				console.log(data);
 				for (var i = 0; i < data.sources.length; i++) {
 					var source = document.createElement("OPTION");
 					source.setAttribute("value", data.sources[i].id);
@@ -20,7 +20,7 @@ $(document).ready(function() {
 				}
 			}
 		}
-	})
+	});
 	$("#source").submit(function(event) {
 		event.preventDefault();
 		document.getElementById("headlines").innerHTML = ""; //removes headlines from any previous selected sources
@@ -35,19 +35,19 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				if (data.status === "ok") {
-					console.log(data)
+					console.log(data);
 					for (var i = 0; i < data.articles.length; i++) {
 						var item = document.createElement("LI");
 						var description = document.createElement("SPAN");
 						var link = data.articles[i].url;
-						item.setAttribute("href", link);
-						item.innerHTML = '<a target="_blank" href= "' + link + '">' + data.articles[i].title + '</a>'
+						//item.setAttribute("href", link);
+						item.innerHTML = '<a target="_blank" href= "' + link + '">' + data.articles[i].title + '</a>';
 						description.innerHTML = data.articles[i].description;
 						document.getElementById("headlines").appendChild(item);
 						document.getElementById("headlines").appendChild(description);
 					}
 				}
 			}
-		})
-	})
+		});
+	});
 })
