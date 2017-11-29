@@ -41,15 +41,26 @@ $(document).ready(function() {
 						var description = document.createElement("SPAN");
 						item.setAttribute("class", "headlines");
 						var link = data.articles[i].url;
-						//item.setAttribute("href", link);
 						item.innerHTML = '<a target="_blank" href= "' + link + '">' + data.articles[i].title + '</a>';
 						description.innerHTML = data.articles[i].description;
+						var tweet = document.createElement("BUTTON");
+						tweet.setAttribute("id", i);
+						tweet.addEventListener("click", function(){
+							var tweetArticle = data.articles[this.id].description + " via " + data.articles[this.id].source.name + " " + data.articles[this.id].url;
+							window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(tweetArticle));
+						});
+						tweet.setAttribute("class", "btn btn-primary tw");
+						tweet.setAttribute("type", "submit");
+						tweet.innerHTML = "Tweet It";
 						document.getElementById("headlines").appendChild(item);
 						document.getElementById("headlines").appendChild(description);
 						document.getElementById("top").innerHTML = "Top Headlines from " + data.articles[i].source.name + ":";
+						document.getElementById("headlines").appendChild(tweet);
+
 					}
+					
 				}
-			}
+		}
 		});
 	});
-})
+});
