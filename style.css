@@ -10,3 +10,7 @@ li {
     margin-top: 10px;
     min-height: 95vh;
 }
+
+.headlines {
+    font-size: 1.5em;
+}

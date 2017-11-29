@@ -4,7 +4,7 @@ $(document).ready(function() {
 		method: "GET",
 		url: "https://newsapi.org/v2/sources",
 		data: {
-			category: "business",
+			category: "general",
 			country: "us",
 			language: "en",
 			apiKey: APIKEY
@@ -28,7 +28,7 @@ $(document).ready(function() {
 			method: "GET",
 			url: "https://newsapi.org/v2/top-headlines?sources=" + document.getElementById("selection").value,
 			data: {
-				category: "business",
+				category: "general",
 				country: "us",
 				language: "en",
 				apiKey: APIKEY
@@ -39,12 +39,14 @@ $(document).ready(function() {
 					for (var i = 0; i < data.articles.length; i++) {
 						var item = document.createElement("LI");
 						var description = document.createElement("SPAN");
+						item.setAttribute("class", "headlines");
 						var link = data.articles[i].url;
 						//item.setAttribute("href", link);
 						item.innerHTML = '<a target="_blank" href= "' + link + '">' + data.articles[i].title + '</a>';
 						description.innerHTML = data.articles[i].description;
 						document.getElementById("headlines").appendChild(item);
 						document.getElementById("headlines").appendChild(description);
+						document.getElementById("top").innerHTML = "Top Headlines from " + data.articles[i].source.name + ":";
 					}
 				}
 			}
