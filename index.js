@@ -31,9 +31,10 @@ $(document).ready(function() {
 			//if source selected, pulls top headlines of source from API
 			$.ajax({
 				method: "GET",
-				url: "https://newsapi.org/v2/top-headlines?sources=" + document.getElementById("selection").value,
+				url: "https://newsapi.org/v2/top-headlines",
 				data: {
 					category: "general",
+					sources: document.getElementById("selection").value,
 					country: "us",
 					language: "en",
 					apiKey: APIKEY
