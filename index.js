@@ -53,7 +53,9 @@ $(document).ready(function() {
 							var tweet = document.createElement("BUTTON");
 							tweet.setAttribute("id", i);
 							tweet.addEventListener("click", function() {
-								var tweetArticle = data.articles[this.id].description + " via " + data.articles[this.id].source.name + " " + data.articles[this.id].url;
+								//var tweetArticle = data.articles[this.id].description + " via " + data.articles[this.id].source.name + " " + data.articles[this.id].url;
+								var outlet = "#"+ data.articles[this.id].source.name.replace(/\s+/g, '');
+								var tweetArticle = data.articles[this.id].description + " via " + outlet + " " + data.articles[this.id].url;
 								window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetArticle));
 							});
 							tweet.setAttribute("class", "btn btn-primary tw");
