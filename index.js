@@ -33,10 +33,10 @@ $(document).ready(function() {
 				method: "GET",
 				url: "https://newsapi.org/v2/top-headlines",
 				data: {
-					category: "general",
+					//category: "general",
 					sources: document.getElementById("selection").value,
-					country: "us",
-					language: "en",
+					//country: "us",
+					//language: "en",
 					apiKey: APIKEY
 				},
 				//if API call is sucessful, populates <ul> with headline and link to article, article description, and button to tweet URL and description of article for each of the top headlines
@@ -53,10 +53,9 @@ $(document).ready(function() {
 							var tweet = document.createElement("BUTTON");
 							tweet.setAttribute("id", i);
 							tweet.addEventListener("click", function() {
-								//var tweetArticle = data.articles[this.id].description + " via " + data.articles[this.id].source.name + " " + data.articles[this.id].url;
-								var outlet = "#"+ data.articles[this.id].source.name.replace(/\s+/g, '');
-								var tweetArticle = data.articles[this.id].description + " via " + outlet + " " + data.articles[this.id].url;
-								window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetArticle));
+							var outlet = "#"+ data.articles[this.id].source.name.replace(/\s+/g, '');
+							var tweetArticle = data.articles[this.id].description + " via " + outlet + " " + data.articles[this.id].url;
+							window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(tweetArticle));
 							});
 							tweet.setAttribute("class", "btn btn-primary tw");
 							tweet.innerHTML = "Tweet It";
